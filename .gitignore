@@ -1,15 +1,28 @@
-# Virtual environment
-venv/
+# R files
+.Rhistory
+.RData
+.Rproj.user/
 
-# Python cache
-__pycache__/
-*.pyc
+# R environment / cache
+.Ruserdata
+*.Rproj
 
-# Jupyter
-.ipynb_checkpoints/
+# Model files (can be large)
+*.rds
 
-# VS Code settings
-.vscode/
+# Logs
+*.log
 
+# OS files
+.DS_Store
+Thumbs.db
+
+# API keys / secrets
+.env
+config.R
+
+# Temporary files
+*.tmp
+*.bak
 # Large raw data (optional)
 data/raw/
