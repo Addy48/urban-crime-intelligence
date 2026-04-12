@@ -8,8 +8,9 @@
 #* @get /predict-risk
 
 function(lat, lon, hour, page = 1, limit = 5, apikey = NULL){
+  crime_data <- read.csv("D:/ADIT/ML/PDS/urban-crime-intelligence/data/processed/clustered_data.csv")
   
-  # -------------------------------
+  # --------------------- ----------
   # 1. AUTHENTICATION
   # -------------------------------
   if (is.null(apikey) || apikey != "12345") {
@@ -25,10 +26,10 @@ function(lat, lon, hour, page = 1, limit = 5, apikey = NULL){
   # -------------------------------
   # 2. Compute distances
   # -------------------------------
-  data$distance <- (data$Latitude - lat)^2 + (data$Longitude - lon)^2
+  crime_data$distance <- (crime_data$Latitude - lat)^2 + (crime_data$Longitude - lon)^2
   
   # Sort nearest
-  sorted_data <- data[order(data$distance), ]
+  sorted_data <- crime_data[order(crime_data$distance), ]
   
   # -------------------------------
   # 3. PAGINATION
