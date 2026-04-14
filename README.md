@@ -120,12 +120,12 @@ http://localhost:8000/kpi?api_key=YOUR_API_KEY
 
 ```
 urban-crime-intelligence/
-├── python/    
-├── r_scripts/             # API code
-├── data/                  # Processed datasets
-├── Dockerfile             # Container setup
-├── .dockerignore
-├── README.md
+├── python_scripts/        # EDA and modeling notebooks
+├── r_scripts/             # Plumber API
+├── data/processed/        # Cleaned datasets
+├── PowerBI/               # Dashboard
+├── Dockerfile
+└── README.md
 ```
 
 ---
@@ -146,9 +146,12 @@ This project demonstrates how data science and software engineering can be combi
 
 ---
 
-## 👨‍💻 Contributors
+## Contributors
 
-* Soumyadeep 
+Joint academic project.
+
+* [Aaditya Upadhyay](https://github.com/Addy48)
+* [Soumyadeep Dasgupta](https://github.com/SOUMYADEEP-rgb)
 * Adit
 
 ---
