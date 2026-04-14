@@ -146,12 +146,8 @@ This project demonstrates how data science and software engineering can be combi
 
 ---
 
-## Contributors
+## Author
 
-Joint academic project.
-
-* [Aaditya Upadhyay](https://github.com/Addy48)
-* [Soumyadeep Dasgupta](https://github.com/SOUMYADEEP-rgb)
-* Adit
+[Aaditya Upadhyay](https://github.com/Addy48)
 
 ---
