@@ -4,7 +4,7 @@ library(dplyr)
 # -------------------------------
 # LOAD DATA
 # -------------------------------
-crime_data <- read.csv("D:/ADIT/ML/PDS/urban-crime-intelligence/data/processed/clustered_data.csv")
+crime_data <- read.csv("D:/ADIT/ML/PDS/urban-crime-intelligence/data/processed/clustered_data_modified_final.csv")
 
 # -------------------------------
 # CORS (KEEP THIS)

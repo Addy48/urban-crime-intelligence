@@ -1,7 +1,7 @@
 library(dplyr)
 library(ggplot2)
 
-setwd("C:/Users/soumy/Desktop/urban-crime-intelligence")
+setwd("D:/ADIT/ML/PDS/urban-crime-intelligence/urban-crime-intelligence")
 
 cat("Loading dataset...\n")
 data <- read.csv("data/processed/clean_data.csv")
