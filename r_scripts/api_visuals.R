@@ -1,5 +1,12 @@
 library(plumber)
 library(dplyr)
+library(dotenv)
+library(here)
+
+dotenv::load_dot_env(here::here(".env"))
+API_KEY <- Sys.getenv("API_KEY")
+
+
 
 # -------------------------------
 # LOAD DATA
@@ -20,6 +27,27 @@ function(req, res){
     return(list())
   }
   
+  plumber::forward()
+}
+
+#* @filter auth
+function(req, res){
+  
+  # 🔑 First try URL query param
+  client_key <- req$args$api_key
+  
+  # 🔁 Fallback to header (optional)
+  if (is.null(client_key)) {
+    client_key <- req$HTTP_X_API_KEY
+  }
+  
+  # ❌ If invalid
+  if (is.null(client_key) || client_key != API_KEY) {
+    res$status <- 401
+    return(list(error = "Unauthorized: Invalid API Key"))
+  }
+  
+  # ✅ Continue request
   plumber::forward()
 }
 
