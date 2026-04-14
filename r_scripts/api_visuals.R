@@ -3,7 +3,7 @@ library(dplyr)
 library(dotenv)
 library(here)
 
-dotenv::load_dot_env(here::here(".env"))
+
 API_KEY <- Sys.getenv("API_KEY")
 
 
@@ -11,7 +11,7 @@ API_KEY <- Sys.getenv("API_KEY")
 # -------------------------------
 # LOAD DATA
 # -------------------------------
-crime_data <- read.csv("D:/ADIT/ML/PDS/urban-crime-intelligence/data/processed/clustered_data_modified_final.csv")
+crime_data <- read.csv("data/processed/clustered_data.csv")
 
 # -------------------------------
 # CORS (KEEP THIS)
