@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+    branches: [development, main]
+  pull_request:
+
+jobs:
+  cpp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test crime engine
+        run: make test

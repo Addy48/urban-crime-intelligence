@@ -1,28 +1,9 @@
-# R files
+bin/
+.DS_Store
+.venv/
+__pycache__/
+.env
+*.o
 .Rhistory
 .RData
-.Rproj.user/
-
-# R environment / cache
-.Ruserdata
-*.Rproj
-
-# Model files (can be large)
-*.rds
-
-# Logs
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# API keys / secrets
-.env
-config.R
-
-# Temporary files
-*.tmp
-*.bak
-# Large raw data (optional)
-data/raw/
+.ipynb_checkpoints/

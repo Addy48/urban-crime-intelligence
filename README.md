@@ -140,6 +140,19 @@ urban-crime-intelligence/
 
 ---
 
+## C++ engine
+
+Risk clustering and arrest classification run in C++ (`cpp/crime_engine.cpp`). No extra libraries.
+
+```bash
+make
+make test
+make cluster    # writes data/processed/clustered_cpp.csv
+make classify   # prints logistic accuracy on Arrest
+```
+
+Four k-means groups on latitude, longitude, hour, night, and local crime density. Logistic model uses hour, night, weekend, and domestic flags.
+
 ## 🧠 Conclusion
 
 This project demonstrates how data science and software engineering can be combined to build a **scalable and intelligent crime analysis system**, enabling better decision-making through data-driven insights.

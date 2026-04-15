@@ -1,0 +1,4 @@
+# Python extras (API helpers). Core clustering/classification is C++.
+
+pandas>=2.0
+scikit-learn>=1.3
