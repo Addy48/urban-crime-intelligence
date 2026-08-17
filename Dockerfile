@@ -1,14 +1,14 @@
-FROM rstudio/plumber
-
-RUN R -e "install.packages(c('dplyr','here','dotenv'), repos='https://cloud.r-project.org/')"
+FROM python:3.12-slim
 
 WORKDIR /app
 
-RUN mkdir -p /app/data/processed
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY r_scripts/api_visuals.R /app/api_visuals.R
+COPY crime_intel/ /app/crime_intel/
 COPY data/processed/clustered_data.csv /app/data/processed/clustered_data.csv
 
+ENV PORT=8000
 EXPOSE 8000
 
-CMD ["api_visuals.R"]
+CMD ["sh", "-c", "uvicorn crime_intel.api:app --host 0.0.0.0 --port ${PORT}"]

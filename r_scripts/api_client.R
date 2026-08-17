@@ -1,6 +1,9 @@
 library(httr)
 library(jsonlite)
 
+api_key <- Sys.getenv("API_KEY")
+if (!nzchar(api_key)) stop("API_KEY is not set. Copy .env.example to .env.")
+
 url <- "http://localhost:8000/predict-risk"
 
 response <- GET(url, query = list(
@@ -9,7 +12,7 @@ response <- GET(url, query = list(
   hour = 23,
   page = 1,
   limit = 5,
-  apikey = "12345"
+  apikey = api_key
 ))
 
 # Convert to text

@@ -1,7 +1,8 @@
 library(dplyr)
 library(ggplot2)
 
-setwd("D:/ADIT/ML/PDS/urban-crime-intelligence/urban-crime-intelligence")
+if (file.exists("r_scripts/_root.R")) source("r_scripts/_root.R") else source("_root.R")
+setwd(.crime_root())
 
 cat("Loading dataset...\n")
 data <- read.csv("data/processed/clean_data.csv")
