@@ -4,6 +4,8 @@ bin/
 __pycache__/
 .env
 *.o
-.Rhistory
-.RData
-.ipynb_checkpoints/
+**/.Rhistory
+**/.RData
+**/.ipynb_checkpoints/
+*.xlsx
+requirements.txt.txt
