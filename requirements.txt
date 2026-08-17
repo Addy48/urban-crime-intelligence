@@ -1,4 +1,7 @@
-# Python extras (API helpers). Core clustering/classification is C++.
-
 pandas>=2.0
 scikit-learn>=1.3
+fastapi>=0.110
+uvicorn>=0.27
+python-dotenv>=1.0
+httpx>=0.27
+pytest>=8.0

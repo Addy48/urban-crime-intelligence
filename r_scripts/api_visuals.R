@@ -3,15 +3,26 @@ library(dplyr)
 library(dotenv)
 library(here)
 
+if (file.exists(".env")) dotenv::load_dot_env(".env")
 
 API_KEY <- Sys.getenv("API_KEY")
+if (!nzchar(API_KEY)) {
+  stop("API_KEY is not set. Copy .env.example to .env or pass --env-file to Docker.")
+}
 
-
+root <- Sys.getenv("PROJECT_ROOT", unset = "")
+if (!nzchar(root)) {
+  root <- tryCatch(here::here(), error = function(e) getwd())
+}
+csv_path <- file.path(root, "data", "processed", "clustered_data.csv")
+if (!file.exists(csv_path)) {
+  csv_path <- "data/processed/clustered_data.csv"
+}
 
 # -------------------------------
 # LOAD DATA
 # -------------------------------
-crime_data <- read.csv("data/processed/clustered_data.csv")
+crime_data <- read.csv(csv_path)
 
 # -------------------------------
 # CORS (KEEP THIS)

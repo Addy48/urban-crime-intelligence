@@ -1,25 +1,24 @@
-CXX ?= g++
-CXXFLAGS ?= -O2 -std=c++17 -Wall -Wextra
-BIN := bin/crime_engine
+PYTHON ?= python3
+export PYTHONPATH := .
 
-.PHONY: all test clean cluster classify
+.PHONY: test cluster classify api cpp cpp-test
 
-all: $(BIN)
+test:
+	$(PYTHON) -m pytest -q
 
-$(BIN): cpp/crime_engine.cpp
+cluster:
+	$(PYTHON) -m crime_intel.engine cluster data/processed/clean_data.csv data/processed/clustered_py.csv
+
+classify:
+	$(PYTHON) -m crime_intel.engine classify data/processed/clean_data.csv
+
+api:
+	uvicorn crime_intel.api:app --host 0.0.0.0 --port 8000
+
+cpp:
 	mkdir -p bin
-	$(CXX) $(CXXFLAGS) -o $@ $<
+	$(CXX) -O2 -std=c++17 -Wall -Wextra -o bin/crime_engine cpp/crime_engine.cpp
 
-cluster: $(BIN)
-	$(BIN) cluster data/processed/clean_data.csv data/processed/clustered_cpp.csv
-
-classify: $(BIN)
-	$(BIN) classify data/processed/clean_data.csv
-
-test: $(BIN)
-	$(BIN) cluster tests/fixtures/sample_crime.csv /tmp/crime_clusters.csv
-	$(BIN) classify tests/fixtures/sample_crime.csv
-	test -s /tmp/crime_clusters.csv
-
-clean:
-	rm -rf bin
+cpp-test: cpp
+	./bin/crime_engine cluster tests/fixtures/sample_crime.csv /tmp/crime_clusters.csv
+	./bin/crime_engine classify tests/fixtures/sample_crime.csv

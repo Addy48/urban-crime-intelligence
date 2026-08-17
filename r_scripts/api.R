@@ -8,12 +8,19 @@
 #* @get /predict-risk
 
 function(lat, lon, hour, page = 1, limit = 5, apikey = NULL){
-  crime_data <- read.csv("D:/ADIT/ML/PDS/urban-crime-intelligence/data/processed/clustered_data.csv")
-  
-  # --------------------- ----------
-  # 1. AUTHENTICATION
-  # -------------------------------
-  if (is.null(apikey) || apikey != "12345") {
+  root <- Sys.getenv("PROJECT_ROOT", unset = "")
+  if (!nzchar(root)) {
+    root <- getwd()
+    if (basename(root) == "r_scripts") root <- dirname(root)
+  }
+  csv_path <- file.path(root, "data", "processed", "clustered_data.csv")
+  crime_data <- read.csv(csv_path)
+
+  expected_key <- Sys.getenv("API_KEY")
+  if (!nzchar(expected_key)) {
+    return(list(error = "API_KEY is not set"))
+  }
+  if (is.null(apikey) || apikey != expected_key) {
     return(list(error = "Unauthorized: Invalid API Key"))
   }
   
