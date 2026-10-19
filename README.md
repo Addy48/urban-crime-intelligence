@@ -68,3 +68,7 @@ tests/                 # pytest
 ```
 
 R scripts resolve the repo root from `PROJECT_ROOT` or the script location. They do not `setwd()` to a laptop path. API clients read `Sys.getenv("API_KEY")` — the key is not in source.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
